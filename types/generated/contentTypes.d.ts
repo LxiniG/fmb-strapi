@@ -410,55 +410,6 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiAboutUsFrontPagePhotoAboutUsFrontPagePhoto
-  extends Struct.SingleTypeSchema {
-  collectionName: 'about_us_front_page_photos';
-  info: {
-    displayName: 'About us page';
-    pluralName: 'about-us-front-page-photos';
-    singularName: 'about-us-front-page-photo';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    aboutUsHistoryText: Schema.Attribute.Text;
-    aboutUsInfoText: Schema.Attribute.Text;
-    aboutUsPhotoBig: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios'
-    >;
-    aboutUsQuote: Schema.Attribute.String;
-    bandleaderPreviewImage: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios'
-    >;
-    contactPreviewImage: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios'
-    >;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    galleryPreviewImage: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios'
-    >;
-    gigsPreviewImage: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios'
-    >;
-    impressumPreviewImage: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios'
-    >;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::about-us-front-page-photo.about-us-front-page-photo'
-    > &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiAboutUsPageAboutUsPage extends Struct.SingleTypeSchema {
   collectionName: 'about_us_pages';
   info: {
@@ -470,12 +421,36 @@ export interface ApiAboutUsPageAboutUsPage extends Struct.SingleTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    aboutUsHistory: Schema.Attribute.String;
-    aboutUsQuote: Schema.Attribute.String;
-    aboutUsText: Schema.Attribute.Text;
+    aboutUsHistory: Schema.Attribute.Text & Schema.Attribute.Required;
+    aboutUsQuote: Schema.Attribute.String & Schema.Attribute.Required;
+    aboutUsText: Schema.Attribute.Text & Schema.Attribute.Required;
+    bandleaderImage: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    > &
+      Schema.Attribute.Required;
+    castImage: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    > &
+      Schema.Attribute.Required;
+    contactImage: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    > &
+      Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    galleryImage: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    > &
+      Schema.Attribute.Required;
+    gigsImage: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    > &
+      Schema.Attribute.Required;
+    impressumImage: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    > &
+      Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -485,7 +460,8 @@ export interface ApiAboutUsPageAboutUsPage extends Struct.SingleTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     titlePhoto: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
-    >;
+    > &
+      Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -504,6 +480,11 @@ export interface ApiBandleaderPageBandleaderPage
     draftAndPublish: true;
   };
   attributes: {
+    about: Schema.Attribute.Text & Schema.Attribute.Required;
+    bandleaderImage: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    > &
+      Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -514,6 +495,47 @@ export interface ApiBandleaderPageBandleaderPage
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    websiteLink: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface ApiCastPageCastPage extends Struct.SingleTypeSchema {
+  collectionName: 'cast_pages';
+  info: {
+    displayName: 'Cast page';
+    pluralName: 'cast-pages';
+    singularName: 'cast-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    image1: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Schema.Attribute.Required;
+    image2: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Schema.Attribute.Required;
+    image3: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Schema.Attribute.Required;
+    image4: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::cast-page.cast-page'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    text1: Schema.Attribute.Text & Schema.Attribute.Required;
+    text2: Schema.Attribute.Text & Schema.Attribute.Required;
+    text3: Schema.Attribute.String & Schema.Attribute.Required;
+    text4: Schema.Attribute.Text & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1058,9 +1080,9 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
-      'api::about-us-front-page-photo.about-us-front-page-photo': ApiAboutUsFrontPagePhotoAboutUsFrontPagePhoto;
       'api::about-us-page.about-us-page': ApiAboutUsPageAboutUsPage;
       'api::bandleader-page.bandleader-page': ApiBandleaderPageBandleaderPage;
+      'api::cast-page.cast-page': ApiCastPageCastPage;
       'api::gig.gig': ApiGigGig;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

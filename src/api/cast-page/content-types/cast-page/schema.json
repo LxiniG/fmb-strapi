@@ -1,40 +1,33 @@
 {
   "kind": "singleType",
-  "collectionName": "about_us_pages",
+  "collectionName": "cast_pages",
   "info": {
-    "singularName": "about-us-page",
-    "pluralName": "about-us-pages",
-    "displayName": "About us page"
+    "singularName": "cast-page",
+    "pluralName": "cast-pages",
+    "displayName": "Cast page"
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "titlePhoto": {
-      "type": "media",
-      "multiple": false,
-      "required": true,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
+    "text1": {
+      "type": "text",
+      "required": true
     },
-    "aboutUsQuote": {
+    "text2": {
+      "type": "text",
+      "required": true
+    },
+    "text3": {
       "type": "string",
       "required": true
     },
-    "aboutUsText": {
+    "text4": {
       "type": "text",
       "required": true
     },
-    "aboutUsHistory": {
-      "type": "text",
-      "required": true
-    },
-    "impressumImage": {
+    "image1": {
       "type": "media",
       "multiple": false,
       "required": true,
@@ -45,7 +38,7 @@
         "audios"
       ]
     },
-    "gigsImage": {
+    "image2": {
       "type": "media",
       "multiple": false,
       "required": true,
@@ -56,7 +49,7 @@
         "audios"
       ]
     },
-    "bandleaderImage": {
+    "image3": {
       "type": "media",
       "multiple": false,
       "required": true,
@@ -67,29 +60,7 @@
         "audios"
       ]
     },
-    "galleryImage": {
-      "type": "media",
-      "multiple": false,
-      "required": true,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
-    "contactImage": {
-      "type": "media",
-      "multiple": false,
-      "required": true,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
-    "castImage": {
+    "image4": {
       "type": "media",
       "multiple": false,
       "required": true,
