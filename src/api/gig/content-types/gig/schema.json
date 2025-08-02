@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "gigs",
+  "info": {
+    "singularName": "gig",
+    "pluralName": "gigs",
+    "displayName": "Gig"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "gigStartDate": {
+      "type": "datetime"
+    },
+    "gigTitle": {
+      "type": "string"
+    },
+    "gigLocation": {
+      "type": "string"
+    },
+    "gigLink": {
+      "type": "string"
+    }
+  }
+}

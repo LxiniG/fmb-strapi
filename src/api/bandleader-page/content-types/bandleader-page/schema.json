@@ -1,0 +1,14 @@
+{
+  "kind": "singleType",
+  "collectionName": "bandleader_pages",
+  "info": {
+    "singularName": "bandleader-page",
+    "pluralName": "bandleader-pages",
+    "displayName": "Bandleader page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {}
+}
