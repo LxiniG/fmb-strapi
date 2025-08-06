@@ -12,16 +12,20 @@
   "pluginOptions": {},
   "attributes": {
     "gigStartDate": {
-      "type": "datetime"
+      "type": "datetime",
+      "required": true
     },
     "gigTitle": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "gigLocation": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "gigLink": {
-      "type": "string"
+      "type": "string",
+      "required": true
     }
   }
 }

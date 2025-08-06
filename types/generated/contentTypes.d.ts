@@ -503,39 +503,59 @@ export interface ApiBandleaderPageBandleaderPage
   };
 }
 
-export interface ApiCastPageCastPage extends Struct.SingleTypeSchema {
-  collectionName: 'cast_pages';
+export interface ApiCastCast extends Struct.CollectionTypeSchema {
+  collectionName: 'casts';
   info: {
-    displayName: 'Cast page';
-    pluralName: 'cast-pages';
-    singularName: 'cast-page';
+    displayName: 'Cast';
+    pluralName: 'casts';
+    singularName: 'cast';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
+    castDescription: Schema.Attribute.Text & Schema.Attribute.Required;
+    castImage: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    castTitle: Schema.Attribute.String & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    image1: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
-      Schema.Attribute.Required;
-    image2: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
-      Schema.Attribute.Required;
-    image3: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
-      Schema.Attribute.Required;
-    image4: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
-      Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::cast.cast'> &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiGalleryAudioGalleryAudio
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'gallery_audios';
+  info: {
+    displayName: 'Gallery audio';
+    pluralName: 'gallery-audios';
+    singularName: 'gallery-audio';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    audio: Schema.Attribute.Media<'audios'> & Schema.Attribute.Required;
+    audioDate: Schema.Attribute.Date;
+    audioDescription: Schema.Attribute.Text & Schema.Attribute.Required;
+    audioTitle: Schema.Attribute.String & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::cast-page.cast-page'
+      'api::gallery-audio.gallery-audio'
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    text1: Schema.Attribute.Text & Schema.Attribute.Required;
-    text2: Schema.Attribute.Text & Schema.Attribute.Required;
-    text3: Schema.Attribute.String & Schema.Attribute.Required;
-    text4: Schema.Attribute.Text & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -574,6 +594,38 @@ export interface ApiGalleryImageGalleryImage
   };
 }
 
+export interface ApiGalleryVideoGalleryVideo
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'gallery_videos';
+  info: {
+    displayName: 'Gallery video';
+    pluralName: 'gallery-videos';
+    singularName: 'gallery-video';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::gallery-video.gallery-video'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    video: Schema.Attribute.Media<'videos'> & Schema.Attribute.Required;
+    videoDate: Schema.Attribute.Date;
+    videoDescription: Schema.Attribute.Text & Schema.Attribute.Required;
+    videoTitle: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface ApiGigGig extends Struct.CollectionTypeSchema {
   collectionName: 'gigs';
   info: {
@@ -588,10 +640,10 @@ export interface ApiGigGig extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    gigLink: Schema.Attribute.String;
-    gigLocation: Schema.Attribute.String;
-    gigStartDate: Schema.Attribute.DateTime;
-    gigTitle: Schema.Attribute.String;
+    gigLink: Schema.Attribute.String & Schema.Attribute.Required;
+    gigLocation: Schema.Attribute.String & Schema.Attribute.Required;
+    gigStartDate: Schema.Attribute.DateTime & Schema.Attribute.Required;
+    gigTitle: Schema.Attribute.String & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::gig.gig'> &
       Schema.Attribute.Private;
@@ -1114,8 +1166,10 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::about-us-page.about-us-page': ApiAboutUsPageAboutUsPage;
       'api::bandleader-page.bandleader-page': ApiBandleaderPageBandleaderPage;
-      'api::cast-page.cast-page': ApiCastPageCastPage;
+      'api::cast.cast': ApiCastCast;
+      'api::gallery-audio.gallery-audio': ApiGalleryAudioGalleryAudio;
       'api::gallery-image.gallery-image': ApiGalleryImageGalleryImage;
+      'api::gallery-video.gallery-video': ApiGalleryVideoGalleryVideo;
       'api::gig.gig': ApiGigGig;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

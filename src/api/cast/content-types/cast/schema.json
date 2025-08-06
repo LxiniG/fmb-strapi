@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "casts",
+  "info": {
+    "singularName": "cast",
+    "pluralName": "casts",
+    "displayName": "Cast"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "castDescription": {
+      "type": "text",
+      "required": true
+    },
+    "castTitle": {
+      "type": "string",
+      "required": true
+    },
+    "castImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}
