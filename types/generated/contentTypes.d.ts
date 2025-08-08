@@ -457,6 +457,9 @@ export interface ApiAboutUsPageAboutUsPage extends Struct.SingleTypeSchema {
       'api::about-us-page.about-us-page'
     > &
       Schema.Attribute.Private;
+    newsletterContactMailAdress: Schema.Attribute.Email &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'funkymarchingband@t-online.de'>;
     publishedAt: Schema.Attribute.DateTime;
     titlePhoto: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'

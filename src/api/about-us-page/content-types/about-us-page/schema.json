@@ -99,6 +99,11 @@
         "videos",
         "audios"
       ]
+    },
+    "newsletterContactMailAdress": {
+      "type": "email",
+      "required": true,
+      "default": "funkymarchingband@t-online.de"
     }
   }
 }
