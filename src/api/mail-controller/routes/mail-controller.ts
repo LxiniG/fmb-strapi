@@ -14,15 +14,6 @@ export default {
             },
         },
         {
-            method: 'POST',
-            path: '/mail-controller/contact-form',
-            handler: 'mail-controller.sendContactForm',
-            config: {
-                policies: [],
-                middlewares: [],
-            },
-        },
-        {
             method: 'GET',
             path: '/mail-controller/config',
             handler: 'mail-controller.getEmailConfig',
