@@ -625,6 +625,7 @@ export interface ApiGalleryVideoGalleryVideo
     video: Schema.Attribute.Media<'videos'> & Schema.Attribute.Required;
     videoDate: Schema.Attribute.Date;
     videoDescription: Schema.Attribute.Text & Schema.Attribute.Required;
+    videoPoster: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     videoTitle: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }

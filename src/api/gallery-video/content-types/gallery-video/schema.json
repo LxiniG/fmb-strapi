@@ -29,6 +29,14 @@
     },
     "videoDate": {
       "type": "date"
+    },
+    "videoPoster": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
     }
   }
 }
