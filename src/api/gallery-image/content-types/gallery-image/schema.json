@@ -29,6 +29,9 @@
     "imageTitle": {
       "type": "string",
       "required": true
+    },
+    "imageCopyright": {
+      "type": "string"
     }
   }
 }

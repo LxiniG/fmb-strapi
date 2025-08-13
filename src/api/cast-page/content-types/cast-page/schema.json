@@ -1,0 +1,23 @@
+{
+  "kind": "singleType",
+  "collectionName": "cast_pages",
+  "info": {
+    "singularName": "cast-page",
+    "pluralName": "cast-pages",
+    "displayName": "Cast Page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "castHeading": {
+      "type": "string",
+      "required": true
+    },
+    "castDescription": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

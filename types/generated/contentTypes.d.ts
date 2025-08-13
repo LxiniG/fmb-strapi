@@ -506,6 +506,35 @@ export interface ApiBandleaderPageBandleaderPage
   };
 }
 
+export interface ApiCastPageCastPage extends Struct.SingleTypeSchema {
+  collectionName: 'cast_pages';
+  info: {
+    displayName: 'Cast Page';
+    pluralName: 'cast-pages';
+    singularName: 'cast-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    castDescription: Schema.Attribute.String & Schema.Attribute.Required;
+    castHeading: Schema.Attribute.String & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::cast-page.cast-page'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiCastCast extends Struct.CollectionTypeSchema {
   collectionName: 'casts';
   info: {
@@ -581,6 +610,7 @@ export interface ApiGalleryImageGalleryImage
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    imageCopyright: Schema.Attribute.String;
     imageDate: Schema.Attribute.Date;
     imageDescription: Schema.Attribute.String & Schema.Attribute.Required;
     imageTitle: Schema.Attribute.String & Schema.Attribute.Required;
@@ -650,6 +680,64 @@ export interface ApiGigGig extends Struct.CollectionTypeSchema {
     gigTitle: Schema.Attribute.String & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::gig.gig'> &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiLoadingMannequinLoadingMannequin
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'loading_mannequins';
+  info: {
+    displayName: 'Loading mannequin';
+    pluralName: 'loading-mannequins';
+    singularName: 'loading-mannequin';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::loading-mannequin.loading-mannequin'
+    > &
+      Schema.Attribute.Private;
+    mannequin: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiPressImagePressImage extends Struct.CollectionTypeSchema {
+  collectionName: 'press_images';
+  info: {
+    displayName: 'Press Image';
+    pluralName: 'press-images';
+    singularName: 'press-image';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    imageDescription: Schema.Attribute.String & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::press-image.press-image'
+    > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
@@ -1201,11 +1289,14 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::about-us-page.about-us-page': ApiAboutUsPageAboutUsPage;
       'api::bandleader-page.bandleader-page': ApiBandleaderPageBandleaderPage;
+      'api::cast-page.cast-page': ApiCastPageCastPage;
       'api::cast.cast': ApiCastCast;
       'api::gallery-audio.gallery-audio': ApiGalleryAudioGalleryAudio;
       'api::gallery-image.gallery-image': ApiGalleryImageGalleryImage;
       'api::gallery-video.gallery-video': ApiGalleryVideoGalleryVideo;
       'api::gig.gig': ApiGigGig;
+      'api::loading-mannequin.loading-mannequin': ApiLoadingMannequinLoadingMannequin;
+      'api::press-image.press-image': ApiPressImagePressImage;
       'api::press-page.press-page': ApiPressPagePressPage;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

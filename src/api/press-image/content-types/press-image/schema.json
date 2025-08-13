@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "press_images",
+  "info": {
+    "singularName": "press-image",
+    "pluralName": "press-images",
+    "displayName": "Press Image"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "imageDescription": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
