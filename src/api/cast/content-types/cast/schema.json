@@ -26,6 +26,12 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "position": {
+      "type": "integer",
+      "required": true,
+      "default": 0,
+      "min": 0
     }
   }
 }
