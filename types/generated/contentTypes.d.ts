@@ -460,6 +460,7 @@ export interface ApiAboutUsPageAboutUsPage extends Struct.SingleTypeSchema {
     newsletterContactMailAdress: Schema.Attribute.Email &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'funkymarchingband@t-online.de'>;
+    pressImage: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     titlePhoto: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
@@ -688,35 +689,6 @@ export interface ApiGigGig extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiLoadingMannequinLoadingMannequin
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'loading_mannequins';
-  info: {
-    displayName: 'Loading mannequin';
-    pluralName: 'loading-mannequins';
-    singularName: 'loading-mannequin';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::loading-mannequin.loading-mannequin'
-    > &
-      Schema.Attribute.Private;
-    mannequin: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiPressImagePressImage extends Struct.CollectionTypeSchema {
   collectionName: 'press_images';
   info: {
@@ -766,9 +738,6 @@ export interface ApiPressPagePressPage extends Struct.SingleTypeSchema {
       'api::press-page.press-page'
     > &
       Schema.Attribute.Private;
-    pressImage1: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
-    pressImage2: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
-    pressImage3: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     pressTextPDF: Schema.Attribute.Media<'files'> & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
@@ -1295,7 +1264,6 @@ declare module '@strapi/strapi' {
       'api::gallery-image.gallery-image': ApiGalleryImageGalleryImage;
       'api::gallery-video.gallery-video': ApiGalleryVideoGalleryVideo;
       'api::gig.gig': ApiGigGig;
-      'api::loading-mannequin.loading-mannequin': ApiLoadingMannequinLoadingMannequin;
       'api::press-image.press-image': ApiPressImagePressImage;
       'api::press-page.press-page': ApiPressPagePressPage;
       'plugin::content-releases.release': PluginContentReleasesRelease;

@@ -104,6 +104,14 @@
       "type": "email",
       "required": true,
       "default": "funkymarchingband@t-online.de"
+    },
+    "pressImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
     }
   }
 }
