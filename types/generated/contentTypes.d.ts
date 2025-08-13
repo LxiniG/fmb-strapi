@@ -558,6 +558,7 @@ export interface ApiCastCast extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     position: Schema.Attribute.Integer &
       Schema.Attribute.Required &
+      Schema.Attribute.Unique &
       Schema.Attribute.SetMinMax<
         {
           min: 0;
