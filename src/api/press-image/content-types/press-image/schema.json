@@ -22,6 +22,9 @@
     "imageDescription": {
       "type": "string",
       "required": true
+    },
+    "imageCopyright": {
+      "type": "string"
     }
   }
 }
