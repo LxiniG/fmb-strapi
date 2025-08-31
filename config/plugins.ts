@@ -1,4 +1,16 @@
 export default ({ env }) => ({
+    upload: {
+        config: {
+            sizeLimit: 2147483648, // Default 2GB for video uploads
+            breakpoints: {
+                xlarge: 1920,
+                large: 1000,
+                medium: 750,
+                small: 500,
+                xsmall: 64
+            },
+        },
+    },
     email: {
         config: {
             provider: 'sendmail', // For production, use 'smtp', 'sendgrid', or other providers
