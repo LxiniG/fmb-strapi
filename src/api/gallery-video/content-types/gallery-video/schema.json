@@ -4,7 +4,7 @@
   "info": {
     "singularName": "gallery-video",
     "pluralName": "gallery-videos",
-    "displayName": "Gallery video"
+    "displayName": "Gallery video LEGACY"
   },
   "options": {
     "draftAndPublish": true

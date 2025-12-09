@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "gallery_you_tube_integrated_videos",
+  "info": {
+    "singularName": "gallery-you-tube-integrated-video",
+    "pluralName": "gallery-you-tube-integrated-videos",
+    "displayName": "Gallery YouTube Integrated Video"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "videoUrl": {
+      "type": "string",
+      "required": true
+    },
+    "videoTitle": {
+      "type": "string"
+    },
+    "videoDescription": {
+      "type": "text"
+    },
+    "videoDate": {
+      "type": "date"
+    }
+  }
+}

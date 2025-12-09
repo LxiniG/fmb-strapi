@@ -642,7 +642,7 @@ export interface ApiGalleryVideoGalleryVideo
   extends Struct.CollectionTypeSchema {
   collectionName: 'gallery_videos';
   info: {
-    displayName: 'Gallery video';
+    displayName: 'Gallery video LEGACY';
     pluralName: 'gallery-videos';
     singularName: 'gallery-video';
   };
@@ -668,6 +668,38 @@ export interface ApiGalleryVideoGalleryVideo
     videoDescription: Schema.Attribute.Text & Schema.Attribute.Required;
     videoPoster: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     videoTitle: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface ApiGalleryYouTubeIntegratedVideoGalleryYouTubeIntegratedVideo
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'gallery_you_tube_integrated_videos';
+  info: {
+    displayName: 'Gallery YouTube Integrated Video';
+    pluralName: 'gallery-you-tube-integrated-videos';
+    singularName: 'gallery-you-tube-integrated-video';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::gallery-you-tube-integrated-video.gallery-you-tube-integrated-video'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    videoDate: Schema.Attribute.Date;
+    videoDescription: Schema.Attribute.Text;
+    videoTitle: Schema.Attribute.String;
+    videoUrl: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
@@ -1274,6 +1306,7 @@ declare module '@strapi/strapi' {
       'api::gallery-audio.gallery-audio': ApiGalleryAudioGalleryAudio;
       'api::gallery-image.gallery-image': ApiGalleryImageGalleryImage;
       'api::gallery-video.gallery-video': ApiGalleryVideoGalleryVideo;
+      'api::gallery-you-tube-integrated-video.gallery-you-tube-integrated-video': ApiGalleryYouTubeIntegratedVideoGalleryYouTubeIntegratedVideo;
       'api::gig.gig': ApiGigGig;
       'api::press-image.press-image': ApiPressImagePressImage;
       'api::press-page.press-page': ApiPressPagePressPage;
