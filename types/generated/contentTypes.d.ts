@@ -734,6 +734,38 @@ export interface ApiGigGig extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiNewsletterMailAdressNewsletterMailAdress
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'newsletter_mail_adresses';
+  info: {
+    displayName: 'Newsletter mail adress';
+    pluralName: 'newsletter-mail-adresses';
+    singularName: 'newsletter-mail-adress';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    adress: Schema.Attribute.Email & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    firstName: Schema.Attribute.String;
+    lastName: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::newsletter-mail-adress.newsletter-mail-adress'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    subscribedSince: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiPressImagePressImage extends Struct.CollectionTypeSchema {
   collectionName: 'press_images';
   info: {
@@ -1311,6 +1343,7 @@ declare module '@strapi/strapi' {
       'api::gallery-video.gallery-video': ApiGalleryVideoGalleryVideo;
       'api::gallery-you-tube-integrated-video.gallery-you-tube-integrated-video': ApiGalleryYouTubeIntegratedVideoGalleryYouTubeIntegratedVideo;
       'api::gig.gig': ApiGigGig;
+      'api::newsletter-mail-adress.newsletter-mail-adress': ApiNewsletterMailAdressNewsletterMailAdress;
       'api::press-image.press-image': ApiPressImagePressImage;
       'api::press-page.press-page': ApiPressPagePressPage;
       'plugin::content-releases.release': PluginContentReleasesRelease;

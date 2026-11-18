@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "newsletter_mail_adresses",
+  "info": {
+    "singularName": "newsletter-mail-adress",
+    "pluralName": "newsletter-mail-adresses",
+    "displayName": "Newsletter mail adress"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "adress": {
+      "type": "email",
+      "required": true
+    },
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "subscribedSince": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
