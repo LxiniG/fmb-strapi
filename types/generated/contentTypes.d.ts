@@ -698,6 +698,9 @@ export interface ApiGalleryYouTubeIntegratedVideoGalleryYouTubeIntegratedVideo
       Schema.Attribute.Private;
     videoDate: Schema.Attribute.Date;
     videoDescription: Schema.Attribute.Text;
+    videoThumbnail: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
     videoTitle: Schema.Attribute.String;
     videoUrl: Schema.Attribute.String & Schema.Attribute.Required;
   };
